@@ -11,10 +11,19 @@ const PORT = process.env.PORT;
 
 const app = express();
 
-app.use(cors());
+app.use(cors({
+	origin: ["https://fakeapi-lete.onrender.com/"],
+	methods: ["GET", "POST"],
+	Credential: true
+
+}));
 app.use(express.json());
 
 //routers--------
+
+app.get("/api", (req, res) => {
+	res.send("Hello World");
+})
 app.use("/api/users", router);
 
 //database connection
