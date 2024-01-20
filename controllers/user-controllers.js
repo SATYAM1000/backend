@@ -127,7 +127,7 @@ export const loginUser = async (req, res) => {
 	}
 };
 
-export const getUserData = async () => {
+export const getUserData = async (req,res) => {
 	try {
 		const user = await UserModel.findById(req.user._id).select("-password");
 		return res.status(200).json({ user });
