@@ -38,7 +38,7 @@ app.use("/api/users", router);
 connectToDatabase()
 	.then(() => {
 		app.listen(PORT, () => {
-			console.log(`Server is running at http://localhost:${PORT}`);
+			console.log(`Server is running`);
 		});
 	})
 	.catch((err) => {

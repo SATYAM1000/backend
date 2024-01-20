@@ -39,7 +39,7 @@ export const registerUser = async (req, res) => {
 		newUser.verificationToken = token;
 		await newUser.save();
 
-		const verificationLink = `http://localhost:5173/verification/${token}`;
+		const verificationLink = `https://ecommerce-satyam.vercel.app/verification/${token}`;
 		const mailOptions = {
 			from: process.env.EMAIL_USER,
 			to: newUser.email,
