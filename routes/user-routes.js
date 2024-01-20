@@ -7,6 +7,7 @@ import {
 	verifyUser,
 	getUserData,
 } from "../controllers/user-controllers.js";
+
 import { authMiddleware } from "../middlewares/authMiddleware.js";
 const router = express.Router();
 

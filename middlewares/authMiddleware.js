@@ -1,6 +1,6 @@
 // /** @format */
 
-import UserModel from "../models/user-schema";
+import UserModel from "../models/user-schema.js";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcryptjs";
 import dotenv from 'dotenv';
