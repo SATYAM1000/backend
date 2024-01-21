@@ -22,7 +22,7 @@ export const authMiddleware = async (req, res, next) => {
 			return res.status(401).json({ error: "Access Denied: Invalid token format" });
 		}
 
-		const isVerified = jwt.verify(jwtToken, process.env.JWT_SECRET);
+		const isVerified = jwt.verify(jwtToken, process.env.SECRET_KEY);
 
 		if (!isVerified) {
 			return res.status(401).json({ error: "Access Denied: Invalid token" });
