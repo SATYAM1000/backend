@@ -9,12 +9,14 @@ dotenv.config();
 export const authMiddleware = async (req, res, next) => {
 	try {
 		const token = req.header("Authorization");
+        console.log("token: ",token);
 
 		if (!token) {
 			return res.status(401).json({ error: "Access Denied: No token provided" });
 		}
 
 		const jwtToken = token.split(" ")[1];
+        console.log("jwt: ",jwtToken);
 
 		if (!jwtToken) {
 			return res.status(401).json({ error: "Access Denied: Invalid token format" });
