@@ -69,7 +69,7 @@ export const verifyUser = async (req, res) => {
 
 		try {
 			const user = await UserModel.findOne({ verificationToken: token });
-			if(user.verificationToken===null){
+			if(user.expired===true){
 				return res.status(400).json({ msg: "Token has expired" });
 			}
 
@@ -82,7 +82,7 @@ export const verifyUser = async (req, res) => {
 			}
 
 			user.verified = true;
-			user.verificationToken = null;
+			user.expired=true;
 			await user.save();
 			return res.status(200).json({ msg: "User verified successfully" });
 		} catch (error) {
