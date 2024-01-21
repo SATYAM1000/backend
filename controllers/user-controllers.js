@@ -70,7 +70,7 @@ export const verifyUser = async (req, res) => {
 		try {
 			const user = await UserModel.findOne({ verificationToken: token });
 			if(user.verificationToken===null){
-				return res.status(400).json({ msg: "Invalid token" });
+				return res.status(400).json({ msg: "Token has expired" });
 			}
 
 			if (!user) {
