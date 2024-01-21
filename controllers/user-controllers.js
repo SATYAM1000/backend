@@ -69,6 +69,9 @@ export const verifyUser = async (req, res) => {
 
 		try {
 			const user = await UserModel.findOne({ verificationToken: token });
+			if(user.verificationToken===null){
+				return res.status(400).json({ msg: "Invalid token" });
+			}
 
 			if (!user) {
 				return res.status(404).json({ msg: "User not found" });
@@ -79,6 +82,7 @@ export const verifyUser = async (req, res) => {
 			}
 
 			user.verified = true;
+			user.verificationToken = null;
 			await user.save();
 			return res.status(200).json({ msg: "User verified successfully" });
 		} catch (error) {
